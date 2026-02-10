@@ -111,8 +111,8 @@
 \fi
 \setmainfont{Latin Modern Roman} % 设置全局英文字体
 \setmathfont{Latin Modern Math}  % 设置数学字体
-\renewcommand\arraystretch{1.3}  % 表格行高（选择题选项间距）
-\renewcommand{\baselinestretch}{1.3} % 设置行间距
+\renewcommand\arraystretch{1.25}  % 表格行高（选择题选项间距）
+\renewcommand{\baselinestretch}{1.65} % 设置行间距
 
 %                         *****************
  %                         ** 主题颜色设置  **
