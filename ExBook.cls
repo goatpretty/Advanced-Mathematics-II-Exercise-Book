@@ -70,10 +70,10 @@
 \RequirePackage{geometry,fancyhdr} % 纸张、边距、页眉、页脚
 \RequirePackage{etoolbox} 
 \RequirePackage{amsmath,amsmath,amssymb} % ams数学相关
-\RequirePackage{fourier}
+%\RequirePackage{fourier}
 % \RequirePackage{mathpazo}
 % \RequirePackage{mathptmx}
-% \RequirePackage{unicode-math}
+\RequirePackage{unicode-math}
 \RequirePackage{pifont} % 带圈数字\ding
 \RequirePackage{bbding} % 图案
 \RequirePackage{romannum} % 罗马数字
@@ -109,8 +109,8 @@
 \else
     \hypersetup {colorlinks=true,linkcolor=black, urlcolor=themeColor, citecolor=red}
 \fi
-\setmainfont{Times New Roman} % 设置全局英文字体为 Times New Roman
-
+\setmainfont{Latin Modern Roman} % 设置全局英文字体
+\setmathfont{Latin Modern Math}  % 设置数学字体
 \renewcommand\arraystretch{1.3}  % 表格行高（选择题选项间距）
 \renewcommand{\baselinestretch}{1.3} % 设置行间距
 
@@ -991,7 +991,7 @@
 \newlength{\qitemlabelwidth}
 \newlength{\qitemlabelsep}
 \newlength{\qitemindent}
-\setlength{\qitemlabelsep}{0.5em}
+\setlength{\qitemlabelsep}{0.25em}
 
 \newcommand{\bigq}{\global\@bigquestiontrue}
 
@@ -1045,17 +1045,21 @@
     \vspace{2mm}
     \par\noindent
     \def\qitemlabel{#1\@prefix\if@showcounter\arabic{QuestionCounter}\fi\@suffix}%
-    \settowidth{\qitemlabelwidth}{\qitemlabel}%
+    \if@showcounter
+        \settowidth{\qitemlabelwidth}{#1\@prefix99\@suffix}%
+    \else
+        \settowidth{\qitemlabelwidth}{\qitemlabel}%
+    \fi
     \setlength{\qitemindent}{\dimexpr\qitemlabelwidth+\qitemlabelsep\relax}%
     \hangindent=\qitemindent
     \hangafter=1
-    \qitemlabel\hspace{\qitemlabelsep}\ignorespaces
+    \makebox[\qitemlabelwidth][l]{\qitemlabel}\hspace{\qitemlabelsep}\ignorespaces
 }
 
 % 定义小问环境
 \newlist{subqitems}{enumerate}{2}
-\setlist[subqitems,1]{label=(\arabic*)}
-\setlist[subqitems,2]{label=(\roman*)}
+\setlist[subqitems,1]{label=(\arabic*), leftmargin=3.25em}
+\setlist[subqitems,2]{label=(\roman*), leftmargin=3.25em}
 
 % 定义新增小问命令
 \newcommand{\subqitem}{\item} 
@@ -1067,10 +1071,15 @@
 \newlength{\choicelengthd}
 \newlength{\choicelengthe}
 \newlength{\maxlength}
+\newlength{\choiceindent}
+\newlength{\choicewidth}
 
 % 三个选项
 \newcommand{\threechoices}[3]{
     \par
+    \setlength{\choiceindent}{-0.25em}
+    \setlength{\choicewidth}{\dimexpr\linewidth-\choiceindent\relax}
+    \noindent\hspace*{\choiceindent}%
 	\settowidth{\choicelengtha}{\@optprefix A\@optsuffix~#1~~~}
 	\settowidth{\choicelengthb}{\@optprefix B\@optsuffix~#2~~~}
 	\settowidth{\choicelengthc}{\@optprefix C\@optsuffix~#3~~~}
@@ -1079,7 +1088,7 @@
 	\ifthenelse{\lengthtest{\choicelengthc>\maxlength}}{\setlength{\maxlength}{\choicelengthc}}{}
 	\ifthenelse{\lengthtest{\maxlength>0.4\linewidth}}
 	{
-		\begin{tabularx}{\linewidth}{X}
+		\begin{tabularx}{\choicewidth}{X}
 			\setlength\tabcolsep{0pt}
 			\@optprefix A\@optsuffix~#1~~~\\
 			\@optprefix B\@optsuffix~#2~~~\\
@@ -1089,14 +1098,14 @@
 	{
 		\ifthenelse{\lengthtest{\maxlength>0.2\linewidth}}
 		{
-			\begin{tabularx}{\linewidth}{XX}
+			\begin{tabularx}{\choicewidth}{XX}
 				\setlength\tabcolsep{0pt}
 				\@optprefix A\@optsuffix~#1~~~ & \@optprefix B\@optsuffix~#2~~~\\
 				\@optprefix C\@optsuffix~#3~~~ & \\
 			\end{tabularx}
 		}%
 		{
-			\begin{tabularx}{\linewidth}{XXXX}
+			\begin{tabularx}{\choicewidth}{XXXX}
 				\setlength\tabcolsep{0pt}
 				\@optprefix A\@optsuffix~#1~~~  & \@optprefix B\@optsuffix~#2~~~ & \@optprefix C\@optsuffix~#3~~~ &\\ 
 			\end{tabularx}
@@ -1109,6 +1118,9 @@
 % 四个选项
 \newcommand{\fourchoices}[4]{
     \par
+    \setlength{\choiceindent}{-0.25em}
+    \setlength{\choicewidth}{\dimexpr\linewidth-\choiceindent\relax}
+    \noindent\hspace*{\choiceindent}%
 	\settowidth{\choicelengtha}{\@optprefix A\@optsuffix~#1~~~}
 	\settowidth{\choicelengthb}{\@optprefix B\@optsuffix~#2~~~}
 	\settowidth{\choicelengthc}{\@optprefix C\@optsuffix~#3~~~}
@@ -1118,7 +1130,7 @@
 	\ifthenelse{\lengthtest{\choicelengthd>\maxlength}}{\setlength{\maxlength}{\choicelengthd}}{}
 	\ifthenelse{\lengthtest{\maxlength>0.4\linewidth}}
 	{
-		\begin{tabularx}{\linewidth}{X}
+		\begin{tabularx}{\choicewidth}{X}
 			\setlength\tabcolsep{0pt}
 			\@optprefix A\@optsuffix~#1~~~\\
 			\@optprefix B\@optsuffix~#2~~~\\
@@ -1129,14 +1141,14 @@
 	{
 		\ifthenelse{\lengthtest{\maxlength>0.2\linewidth}}
 		{
-			\begin{tabularx}{\linewidth}{XX}
+			\begin{tabularx}{\choicewidth}{XX}
 				\setlength\tabcolsep{0pt}
 				\@optprefix A\@optsuffix~#1~~~ & \@optprefix B\@optsuffix~#2~~~\\
 				\@optprefix C\@optsuffix~#3~~~ & \@optprefix D\@optsuffix~#4~~~\\
 			\end{tabularx}
 		}%
 		{
-			\begin{tabularx}{\linewidth}{XXXX}
+			\begin{tabularx}{\choicewidth}{XXXX}
 				\setlength\tabcolsep{0pt}
 				\@optprefix A\@optsuffix~#1~~~  & \@optprefix B\@optsuffix~#2~~~ & \@optprefix C\@optsuffix~#3~~~ & \@optprefix D\@optsuffix~#4~~~\\ 
 				% A.~#1~~~  & B.~#2~~~ & C.~#3~~~ & D.~#4~~~\\ 
@@ -1150,6 +1162,9 @@
 % 五个选项
 \newcommand{\fivechoices}[5]{
     \par
+    \setlength{\choiceindent}{-0.25em}
+    \setlength{\choicewidth}{\dimexpr\linewidth-\choiceindent\relax}
+    \noindent\hspace*{\choiceindent}%
 	\settowidth{\choicelengtha}{\@optprefix A\@optsuffix~#1~~~}
 	\settowidth{\choicelengthb}{\@optprefix B\@optsuffix~#2~~~}
 	\settowidth{\choicelengthc}{\@optprefix C\@optsuffix~#3~~~}
@@ -1160,7 +1175,7 @@
 	\ifthenelse{\lengthtest{\choicelengthd>\maxlength}}{\setlength{\maxlength}{\choicelengthd}}{}
 	\ifthenelse{\lengthtest{\choicelengthe>\maxlength}}{\setlength{\maxlength}{\choicelengthe}}{}
 	\ifthenelse{\lengthtest{\maxlength>0.4\linewidth}}{
-		\begin{tabularx}{\linewidth}{X}
+		\begin{tabularx}{\choicewidth}{X}
 			\setlength\tabcolsep{0pt}
 			\@optprefix A\@optsuffix~#1~~~\\
 			\@optprefix B\@optsuffix~#2~~~\\
@@ -1172,7 +1187,7 @@
 	{
 		\ifthenelse{\lengthtest{\maxlength>0.2\linewidth}}
 		{
-			\begin{tabularx}{\linewidth}{XX}
+			\begin{tabularx}{\choicewidth}{XX}
 				\setlength\tabcolsep{0pt}
 				\@optprefix A\@optsuffix~#1~~~ & \@optprefix B\@optsuffix~#2~~~\\
 				\@optprefix C\@optsuffix~#3~~~ & \@optprefix D\@optsuffix~#4~~~\\
@@ -1180,7 +1195,7 @@
 			\end{tabularx}
 		}%
 		{
-			\begin{tabularx}{\linewidth}{XXXX}
+			\begin{tabularx}{\choicewidth}{XXXX}
 				\setlength\tabcolsep{0pt}
 				\@optprefix A\@optsuffix~#1~~~  & \@optprefix B\@optsuffix~#2~~~ & \@optprefix C\@optsuffix~#3~~~ & \@optprefix D\@optsuffix~#4~~~ \\
 				\@optprefix E\@optsuffix~#5~~~  &          &          &          \\
@@ -1195,6 +1210,9 @@
 % 六个选项
 \newcommand{\sixchoices}[6]{
     \par
+    \setlength{\choiceindent}{-0.5em}
+    \setlength{\choicewidth}{\dimexpr\linewidth-\choiceindent\relax}
+    \noindent\hspace*{\choiceindent}%
 	\settowidth{\choicelengtha}{\@optprefix A\@optsuffix~#1~~~}
 	\settowidth{\choicelengthb}{\@optprefix B\@optsuffix~#2~~~}
 	\settowidth{\choicelengthc}{\@optprefix C\@optsuffix~#3~~~}
@@ -1206,7 +1224,7 @@
 	
 	\ifthenelse{\lengthtest{\maxlength>0.4\linewidth}}
 	{
-		\begin{tabularx}{\linewidth}{X}
+		\begin{tabularx}{\choicewidth}{X}
 			\setlength\tabcolsep{0pt}
 			\@optprefix A\@optsuffix~#1~~~\\
 			\@optprefix B\@optsuffix~#2~~~\\
@@ -1219,7 +1237,7 @@
 	{
 		\ifthenelse{\lengthtest{\maxlength>0.2\linewidth}}
 		{
-			\begin{tabularx}{\linewidth}{XX}
+			\begin{tabularx}{\choicewidth}{XX}
 				\setlength\tabcolsep{0pt}
 				\@optprefix A\@optsuffix~#1~~~ & \@optprefix B\@optsuffix~#2~~~\\
 				\@optprefix C\@optsuffix~#3~~~ & \@optprefix D\@optsuffix~#4~~~\\
@@ -1227,7 +1245,7 @@
 			\end{tabularx}
 		}%
 		{
-			\begin{tabularx}{\linewidth}{XXXX}
+			\begin{tabularx}{\choicewidth}{XXXX}
 				\setlength\tabcolsep{0pt}
 				\@optprefix A\@optsuffix~#1~~~  & \@optprefix B\@optsuffix~#2~~~ & \@optprefix C\@optsuffix~#3~~~ & \@optprefix D\@optsuffix~#4~~~ \\
 				\@optprefix E\@optsuffix~#2~~~  & \@optprefix F\@optsuffix~#6~~~ &          &          \\
