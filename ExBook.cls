@@ -1,4 +1,4 @@
-\def\fileversion{1.1}
+﻿\def\fileversion{1.1}
 \def\filedate{2025/1/15}
 
 \NeedsTeXFormat{LaTeX2e}
@@ -41,6 +41,10 @@
 % 是否显示章节序号
 \newif\if@showmark  \@showmarkfalse
 \DeclareOption{showmark}{\@showmarktrue}
+
+\newif\if@bboxblank  \@bboxblankfalse
+\newif\if@bboxchoice  \@bboxchoicefalse
+\newif\if@bboxbig  \@bboxbigfalse
 
 % 定义默认页面格式
 \def\@pageformat{standard}
@@ -111,8 +115,8 @@
 \fi
 \setmainfont{Latin Modern Roman} % 设置全局英文字体
 \setmathfont{Latin Modern Math}  % 设置数学字体
-\renewcommand\arraystretch{1.25}  % 表格行高（选择题选项间距）
-\renewcommand{\baselinestretch}{1.65} % 设置行间距
+\renewcommand\arraystretch{1.3}  % 表格行高（选择题选项间距）
+\renewcommand{\baselinestretch}{1.5} % 设置行间距
 
 %                         *****************
  %                         ** 主题颜色设置  **
@@ -388,7 +392,7 @@
     \renewcommand{\footrulewidth}{0pt}
 
     % 创建单个题目环境
-    \newenvironment{bbox}
+    \newenvironment{bbox}[1][]
     {
 
     }
@@ -469,17 +473,31 @@
     \renewcommand{\headrulewidth}{0.4pt}
     \renewcommand{\footrulewidth}{0pt}
 
-    \newenvironment{bbox}
+    \newenvironment{bbox}[1][]
 {
 \global\@bigquestionfalse
+\global\@bboxblankfalse
+\global\@bboxchoicefalse
+\global\@bboxbigfalse
+\edef\@bboxopt{\detokenize{#1}}%
+\edef\@bboxblanktag{\detokenize{blank}}%
+\edef\@bboxchoicetag{\detokenize{choice}}%
+\edef\@bboxbigtag{\detokenize{big}}%
+\ifx\@bboxopt\@bboxblanktag \global\@bboxblanktrue \fi
+\ifx\@bboxopt\@bboxchoicetag \global\@bboxchoicetrue \fi
+\ifx\@bboxopt\@bboxbigtag \global\@bboxbigtrue \global\@bigquestiontrue \fi
 \begin{minipage}{\textwidth}
 }
 {
+    \end{minipage}
 
 \if@bigquestion
-    \vspace*{4cm}
+    \par\addvspace{4cm}
+\else
+    \if@bboxblank
+        \par\addvspace{4mm}
+    \fi
 \fi
-    \end{minipage}
 
     \if@water
         \begin{tikzpicture}[overlay,remember picture]
@@ -634,7 +652,7 @@
     
     }
     
-    \newenvironment{bbox}
+    \newenvironment{bbox}[1][]
     {
 
     \begin{minipage}{\textwidth}
@@ -714,7 +732,7 @@
     \renewcommand{\headrulewidth}{0.4pt}
     \renewcommand{\footrulewidth}{0pt}
 
-    \newenvironment{bbox}
+    \newenvironment{bbox}[1][]
     {
         \begingroup
         \begin{minipage}{\textwidth}
@@ -800,7 +818,7 @@
     \renewcommand{\headrulewidth}{0.4pt}
     \renewcommand{\footrulewidth}{0pt}
 
-    \newenvironment{bbox}
+    \newenvironment{bbox}[1][]
     {
         \begingroup
     }
@@ -963,7 +981,7 @@
     
     }
     
-    \newenvironment{bbox}
+    \newenvironment{bbox}[1][]
     {
         \begingroup
         \begin{minipage}{\textwidth}
@@ -1035,8 +1053,11 @@
 	\par \begingroup \par
 }{
 	\par \endgroup \par
+    \removelastskip
     \endgroup
-    \clearpage
+    \ifnum\myPageFormat=4\relax
+        \clearpage
+    \fi
 }
 
 % 定义题目命令 
@@ -1050,7 +1071,7 @@
     \else
         \settowidth{\qitemlabelwidth}{\qitemlabel}%
     \fi
-    \setlength{\qitemindent}{\dimexpr\qitemlabelwidth+\qitemlabelsep\relax}%
+    \setlength{\qitemindent}{\dimexpr\qitemlabelwidth+\qitemlabelsep+0.15em\relax}%
     \hangindent=\qitemindent
     \hangafter=1
     \makebox[\qitemlabelwidth][l]{\qitemlabel}\hspace{\qitemlabelsep}\ignorespaces
@@ -1077,7 +1098,7 @@
 % 三个选项
 \newcommand{\threechoices}[3]{
     \par
-    \setlength{\choiceindent}{-0.25em}
+    \setlength{\choiceindent}{-0.75em}
     \setlength{\choicewidth}{\dimexpr\linewidth-\choiceindent\relax}
     \noindent\hspace*{\choiceindent}%
 	\settowidth{\choicelengtha}{\@optprefix A\@optsuffix~#1~~~}
@@ -1118,7 +1139,7 @@
 % 四个选项
 \newcommand{\fourchoices}[4]{
     \par
-    \setlength{\choiceindent}{-0.25em}
+    \setlength{\choiceindent}{-0.75em}
     \setlength{\choicewidth}{\dimexpr\linewidth-\choiceindent\relax}
     \noindent\hspace*{\choiceindent}%
 	\settowidth{\choicelengtha}{\@optprefix A\@optsuffix~#1~~~}
@@ -1162,7 +1183,7 @@
 % 五个选项
 \newcommand{\fivechoices}[5]{
     \par
-    \setlength{\choiceindent}{-0.25em}
+    \setlength{\choiceindent}{-0.75em}
     \setlength{\choicewidth}{\dimexpr\linewidth-\choiceindent\relax}
     \noindent\hspace*{\choiceindent}%
 	\settowidth{\choicelengtha}{\@optprefix A\@optsuffix~#1~~~}
@@ -1210,7 +1231,7 @@
 % 六个选项
 \newcommand{\sixchoices}[6]{
     \par
-    \setlength{\choiceindent}{-0.5em}
+    \setlength{\choiceindent}{-1em}
     \setlength{\choicewidth}{\dimexpr\linewidth-\choiceindent\relax}
     \noindent\hspace*{\choiceindent}%
 	\settowidth{\choicelengtha}{\@optprefix A\@optsuffix~#1~~~}
@@ -1260,6 +1281,8 @@
 %                         *************************
 %                         **   章节标题与目录显示   **
 %                         *************************
+\newcommand{\ExBook@cleartosection}{\clearpage}
+
 \if@notocnum
     % 不显示目录编号
     \titlecontents{section}[0em]
@@ -1297,7 +1320,7 @@
 
     % 自定义 \section 标题样式
     \titleformat{\section}[block]
-    {\newpage \centering\heiti\fontsize{13pt}{0}}
+    {\centering\heiti\fontsize{13pt}{0}}
     {}
     {0em}
     {} % 居中、字体和大小，每一个section都重启一页
@@ -1348,7 +1371,7 @@
 
     % 自定义 \section 标题样式
     \titleformat{\section}[block]
-    {\newpage \centering\heiti\normalsize}
+    {\centering\heiti\normalsize}
     {第\thesection 章}
     {1em}
     {} % 居中、字体和大小，每一个section都重启一页
@@ -1360,6 +1383,18 @@
     {0.6em} % 与标题编号的间距
     {} % 标题之后的间距
 \fi
+
+\newif\if@justsection
+\@justsectionfalse
+
+\pretocmd{\section}{\clearpage\global\@justsectiontrue}{}{}
+\pretocmd{\subsection}{%
+    \if@justsection
+        \global\@justsectionfalse
+    \else
+        \clearpage
+    \fi
+}{}{}
 
 \AtBeginDocument{
 	\pagenumbering{arabic}  % 使用阿拉伯数字页码
