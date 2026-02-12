@@ -595,7 +595,7 @@
 
 \end{qitems}
 
-\section{重积分及其应用}
+\section{重积分}
 
 \subsection{二重积分的概念与性质}
 \begin{qitems}
@@ -1279,6 +1279,277 @@
 
     \begin{bbox}[big]
         \qitem 求常数 $k$，使曲线积分 $\displaystyle \int_{L}(3x^{2}+y^{2})\,\mathrm{d}x+kxy\,\mathrm{d}y$ 在整个 $xoy$ 面内与积分路径无关，并计算 $\displaystyle \int_{(0,1)}^{(2,2)}(3x^{2}+y^{2})\,\mathrm{d}x+kxy\,\mathrm{d}y$ 的值。
+    \end{bbox}
+
+\end{qitems}
+
+\section{无穷级数}
+
+\subsection{常数项无穷级数的概念和性质}
+\begin{qitems}
+
+    \begin{bbox}[choice]
+        \qitem 若级数 $\displaystyle \sum_{n=1}^{\infty}u_{n}$ 收敛，则\blankbox。
+        \fourchoices{$\displaystyle \sum_{n=1}^{\infty}\left|u_{n}\right|$ 必收敛}{$\displaystyle \sum_{n=1}^{\infty}u_{n}^{2}$ 必收敛}{数列 $\left\{S_{n}\right\}$ 有界}{以上都不正确}
+    \end{bbox}
+
+    \begin{bbox}[choice]
+        \qitem 若级数 $\displaystyle \sum_{n=1}^{\infty}u_{n}$ 收敛于 $S$，则 $\displaystyle \sum_{n=1}^{\infty}(u_{n}+u_{n+1})$ 必\blankbox。
+        \fourchoices{收敛于 $2S$}{收敛于 $2S+u_{1}$}{收敛于 $2S-u_{1}$}{发散}
+    \end{bbox}
+
+    \begin{bbox}[choice]
+        \qitem 若 $\displaystyle \lim_{n\to\infty} b_{n}=+\infty$，则级数 $\displaystyle \sum_{n=1}^{\infty}\left(\frac{1}{b_{n}}-\frac{1}{b_{n+1}}\right)$\blankbox。
+        \fourchoices{发散}{收敛于 $0$}{收敛于 $\dfrac{1}{b_{1}}$}{敛散性不确定}
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 判断下列级数的敛散性：
+        \begin{subqitems}
+            \subqitem $\displaystyle \sum_{n=1}^{\infty}\frac{1}{\sqrt[n]{5}}$；
+            \subqitem $\displaystyle \sum_{n=1}^{\infty}\left(\frac{1}{6^{n}}+\frac{1}{\sqrt[n]{n}}\right)$。
+        \end{subqitems}
+    \end{bbox}
+
+\end{qitems}
+
+\subsection{常数项级数的审敛法}
+\begin{qitems}
+
+    \begin{bbox}[choice]
+        \qitem 若级数 $\displaystyle \sum_{n=1}^{\infty}u_{n}^{2}$ 收敛，则级数 $\displaystyle \sum_{n=1}^{\infty}u_{n}$\blankbox。
+        \fourchoices{一定绝对收敛}{可能收敛也可能发散}{一定发散}{一定条件收敛}
+    \end{bbox}
+
+    \begin{bbox}[choice]
+        \qitem 正项级数 $\displaystyle \sum_{n=1}^{\infty}u_{n}$ 收敛是级数 $\displaystyle \sum_{n=1}^{\infty}u_{n}^{2}$ 收敛的\blankbox。
+        \fourchoices{充分条件}{必要条件}{充要条件}{以上都不正确}
+    \end{bbox}
+
+    \begin{bbox}[choice]
+        \qitem 若级数 $\displaystyle \sum_{n=1}^{\infty}a_{n}^{2}$、$\displaystyle \sum_{n=1}^{\infty}b_{n}^{2}$ 都收敛，则级数 $\displaystyle \sum_{n=1}^{\infty}a_{n}b_{n}$\blankbox。
+        \fourchoices{一定条件收敛}{一定绝对收敛}{一定发散}{可能收敛也可能发散}
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 判断下列级数的敛散性：
+        \begin{subqitems}
+            \subqitem $\displaystyle \sum_{n=1}^{\infty}\frac{n+2}{2^{n}}$；
+            \subqitem $\displaystyle \sum_{n=1}^{\infty}\ln\frac{n+1}{n}$；
+            \subqitem $\displaystyle \sum_{n=1}^{\infty}\left(\frac{n}{2n+1}\right)^{n}$；
+            \subqitem $\displaystyle \sum_{n=1}^{\infty}\frac{1}{n\sqrt{n+1}}$。
+        \end{subqitems}
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 判断下列级数是否收敛，若收敛指出为绝对收敛还是条件收敛：
+        \begin{subqitems}
+            \subqitem $\displaystyle \sum_{n=1}^{\infty}\frac{\sin\frac{n\pi}{3}}{n^{2}}$；
+            \subqitem $\displaystyle \sum_{n=1}^{\infty}\frac{\sin\frac{n\pi}{4}}{n^{2}+\sin\frac{n\pi}{4}}$；
+            \subqitem $\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}\frac{1}{\ln(1+n)}$；
+            \subqitem $\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}\sin\frac{x}{n}\quad(x>0)$；
+            \subqitem $\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}\frac{k+n}{n^{2}}\quad(k>0)$。
+        \end{subqitems}
+    \end{bbox}
+
+\end{qitems}
+
+\subsection{幂级数}
+\begin{qitems}
+
+    \begin{bbox}[blank]
+        \qitem 幂级数 $\displaystyle \sum_{n=1}^{\infty}n x^{n}$ 的收敛域为\blankline。
+    \end{bbox}
+
+    \begin{bbox}[blank]
+        \qitem 幂级数 $\displaystyle \sum_{n=1}^{\infty}\frac{(x+2)^{n}}{\sqrt{n}}$ 的收敛域为\blankline。
+    \end{bbox}
+
+    \begin{bbox}[blank]
+        \qitem 若幂级数 $\displaystyle \sum_{n=1}^{\infty}a_{n}x^{n}$ 满足 $\displaystyle \lim_{n\to\infty}\left|\frac{a_{n+1}}{a_{n}}\right|=\rho$，当 $0<\rho<+\infty$ 时收敛半径 $R=$\blankline。
+    \end{bbox}
+
+    \begin{bbox}[choice]
+        \qitem 已知级数 $\displaystyle \sum_{n=1}^{\infty}a_{n}(x-3)^{n}$ 在 $x=4$ 处发散，则其在 $x=0$ 处\blankbox。
+        \fourchoices{绝对收敛}{条件收敛}{发散}{无法判断}
+    \end{bbox}
+
+    \begin{bbox}[choice]
+        \qitem 级数 $\displaystyle \sum_{n=1}^{\infty}\frac{\sqrt{n}}{(x-2)^{n}}$ 的收敛域为\blankbox。
+        \fourchoices{$(1,+\infty)$}{$(-\infty,1)$}{$(-\infty,1)\cup(3,+\infty)$}{$(1,3)$}
+    \end{bbox}
+
+    \begin{bbox}[choice]
+        \qitem 若级数 $\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}\frac{(x-a)^{n}}{n}$ 在 $x>0$ 处发散，而在 $x=0$ 处收敛，则常数 $a=$\blankbox。
+        \fourchoices{$1$}{$-1$}{$2$}{$-2$}
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 利用幂级数性质，求下列幂级数的收敛域与和函数：
+        \begin{subqitems}
+            \subqitem $\displaystyle \sum_{n=1}^{\infty}(-1)^{n-1}n x^{n-1}$；
+            \subqitem $\displaystyle \sum_{n=1}^{\infty}\frac{x^{4n+1}}{4n+1}$；
+            \subqitem 计算 $\displaystyle \sum_{n=1}^{\infty}\frac{x^{2n-1}}{2n-1}$ 的和函数，并进一步计算 $\displaystyle \sum_{n=1}^{\infty}\frac{1}{(2n-1)2^{n}}$ 的和。
+        \end{subqitems}
+    \end{bbox}
+
+\end{qitems}
+
+\subsection{函数展开成幂级数}
+\begin{qitems}
+
+    \begin{bbox}[big]
+        \qitem 将 $f(x)=\sin^{2}x$ 展开成 $x$ 的幂级数。
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 分别求出 $f(x)=\dfrac{1}{(x-1)(x-4)}$ 在 $x_{0}=0,\;x_{0}=2$ 的某邻域内的泰勒级数。
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 将 $f(x)=\arctan\dfrac{1+x}{1-x}$ 展开成 $x$ 的幂级数。
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 求 $\displaystyle \sum_{n=0}^{\infty}\frac{2n+1}{n!}$ 的和。
+    \end{bbox}
+
+\end{qitems}
+
+\subsection{傅里叶级数}
+\begin{qitems}
+
+    \begin{bbox}[choice]
+        \qitem 三角函数的正交性是指在三角函数系中\blankbox。
+        \fourchoices{任意一个函数在 $[-\pi,\pi]$ 上积分值为 $0$}{任意两个不同函数的乘积在 $[-\pi,\pi]$ 上积分值为 $0$}{任意一个函数的平方在 $[-\pi,\pi]$ 上积分值为 $0$}{任意两个不同函数的乘积在 $[-\pi,\pi]$ 上积分值为 $0$，任意一个函数的平方在 $[-\pi,\pi]$ 上积分值为 $0$}
+    \end{bbox}
+
+    \begin{bbox}[choice]
+        \qitem 设周期函数 $f(x)$ 以 $2\pi$ 为周期，在区间 $(0,2\pi]$ 上有 $f(x)=x^{2}$，则 $f(x)$ 的傅里叶级数在 $x=0$ 处收敛于\blankbox。
+        \fourchoices{$0$}{$\pi^{2}$}{$2\pi^{2}$}{$4\pi^{2}$}
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 将函数 $f(x)=e^{x}$（$x\in(0,\pi)$）展开成正弦级数。
+    \end{bbox}
+
+\end{qitems}
+
+\subsection{一般周期函数的傅里叶级数}
+\begin{qitems}
+
+    \begin{bbox}[choice]
+        \qitem 由函数 $y=x^{2}$ 在 $[-1,1]$ 的傅里叶级数 $\displaystyle \frac{1}{3}+\frac{4}{\pi^{2}}\sum_{n=1}^{\infty}\frac{(-1)^{n}}{n^{2}}\cos n\pi x$ 可得 $\displaystyle \sum_{n=1}^{\infty}\frac{(-1)^{n}}{n^{2}}=$\blankbox。
+        \vspace{1mm}
+        \fourchoices{$-\dfrac{\pi^{2}}{12}$}{$-\dfrac{\pi^{2}}{6}$}{$\dfrac{\pi^{2}}{6}$}{$\dfrac{\pi^{2}}{12}$}
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 将函数 $f(x)=\begin{cases}0, & -2\le x\le 0,\\ 1, & 0<x<2\end{cases}$ 展开成傅里叶级数。
+    \end{bbox}
+
+\end{qitems}
+
+\subsection{本章综合测验}
+\vspace{3mm}
+\textbf{一、选择题}
+\vspace{3mm}
+\begin{qitems}
+
+    \begin{bbox}[choice]
+        \qitem 指出下列命题正确的是\blankbox。
+        \fourchoices{若 $\lim\limits_{n\to\infty}u_{n}=0$，则 $\sum_{n=1}^{\infty}u_{n}$ 收敛}{若 $\lim\limits_{n\to\infty}(u_{n+1}-u_{n})=0$，则 $\sum_{n=1}^{\infty}u_{n}$ 收敛}{若 $\sum_{n=1}^{\infty}u_{n}$ 收敛，则 $\lim\limits_{n\to\infty}u_{n}=0$}{若 $\sum_{n=1}^{\infty}u_{n}$ 发散，则 $\lim\limits_{n\to\infty}u_{n}\neq 0$}
+    \end{bbox}
+
+    \begin{bbox}[choice]
+        \qitem 设级数 (1) $\displaystyle \sum_{n=1}^{\infty}\frac{8^{n}}{n!}$ 与 (2) $\displaystyle \sum_{n=1}^{\infty}\frac{3^{n}n!}{n^{n}}$，其敛散性判定结果是\blankbox。
+        \vspace{1mm}
+        \fourchoices{(1)(2) 都收敛}{(1) 发散，(2) 收敛}{(1)(2) 都发散}{(1) 收敛，(2) 发散}
+    \end{bbox}
+
+    \begin{bbox}[choice]
+        \qitem 已知级数 $\displaystyle \sum_{n=1}^{\infty}a_{n}(x-2)^{n}$ 在 $x=-2$ 处发散，则其在 $x=5$ 处\blankbox。
+        \fourchoices{一定发散}{一定条件收敛}{一定绝对收敛}{无法判断}
+    \end{bbox}
+
+    \begin{bbox}[choice]
+        \qitem 若级数 $\displaystyle \sum_{n=1}^{\infty}u_{n}$ 收敛，则下列级数中必收敛的是\blankbox。
+        \vspace{2mm}
+        \fourchoices{$\displaystyle \sum_{n=1}^{\infty}(-1)^{n}u_{n}$}{$\displaystyle \sum_{n=1}^{\infty}u_{n}^{2}$}{$\displaystyle \sum_{n=1}^{\infty}(u_{n}-u_{n+1})$}{$\displaystyle \sum_{n=1}^{\infty}\left|u_{n}\right|$}
+    \end{bbox}
+
+    \begin{bbox}[choice]
+        \qitem 设周期函数 $f(x)$ 以 $2\pi$ 为周期，在区间 $[-\pi,\pi]$ 上有 $f(x)=2x^{2}$，则 $f(x)$ 的傅里叶级数在 $x=-\pi$ 处收敛于\blankbox。
+        \fourchoices{$0$}{$\pi^{2}$}{$2\pi^{2}$}{$4\pi^{2}$}
+    \end{bbox}
+
+    \begin{bbox}[choice]
+        \qitem 已知函数 $f(x)=x^{2}$ 在 $[-\pi,\pi]$ 上的傅里叶级数 $\displaystyle \frac{\pi^{2}}{3}+4\sum_{n=1}^{\infty}(-1)^{n}\frac{1}{n^{2}}\cos nx$，则 $\displaystyle \sum_{n=1}^{\infty}\frac{1}{n^{2}}=$\blankbox。
+        \vspace{3mm}
+        \fourchoices{$-\dfrac{\pi^{2}}{3}$}{$-\dfrac{\pi^{2}}{6}$}{$\dfrac{\pi^{2}}{3}$}{$\dfrac{\pi^{2}}{6}$}
+    \end{bbox}
+
+\end{qitems}
+\newpage
+\textbf{二、填空题}
+\begin{qitems}
+
+    \begin{bbox}[blank]
+        \qitem 已知级数 $\displaystyle \sum_{n=1}^{\infty}u_{n}$ 的前 $n$ 项和 $S_{n}=\dfrac{3n}{n+1}$，则通项 $u_{n}=$\blankline。
+    \end{bbox}
+
+    \begin{bbox}[blank]
+        \qitem 幂级数 $\displaystyle \sum_{n=1}^{\infty}n4^{n+1}x^{n}$ 的收敛区间是\blankline。
+    \end{bbox}
+
+    \begin{bbox}[blank]
+        \qitem 幂级数 $\displaystyle \sum_{n=1}^{\infty}\left(\frac{2^{n}}{n}+\frac{3^{n}}{n^{2}}\right)x^{n}$ 的收敛域是\blankline。
+    \end{bbox}
+
+    \begin{bbox}[blank]
+        \qitem 级数 $\displaystyle \sum_{n=1}^{\infty}\frac{1}{(3n-2)(3n+1)}$ 的和 $s=$\blankline。
+    \end{bbox}
+
+    \begin{bbox}[blank]
+        \qitem 如果幂级数 $\displaystyle \sum_{n=1}^{\infty}a_{n}(x-1)^{n}$ 在 $x=-1$ 处条件收敛，在 $x=3$ 处发散，则该级数的收敛半径 $R=$\blankline。
+    \end{bbox}
+
+\end{qitems}
+\vspace{5mm}
+\textbf{三、计算题}
+\vspace{3mm}
+\begin{qitems}
+
+    \begin{bbox}[big]
+        \qitem 判定级数 $\displaystyle \sum_{n=1}^{\infty}\frac{n\cos^{2}\frac{n\pi}{3}}{5^{n}}$ 的敛散性。
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 判定级数 $\displaystyle \sum_{n=1}^{\infty}\sqrt{n+1}\left(1-\cos\frac{3\pi}{n}\right)$ 的敛散性。
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 判定级数 $\displaystyle \sum_{n=1}^{\infty}(-1)^{n}\frac{1}{3^{n}}\left(1+\frac{1}{n}\right)^{n^{2}}$ 的敛散性。
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 判定级数 $\displaystyle \sum_{n=1}^{\infty}\left[n\left(\frac{2}{3}\right)^{n}+3^{n}\sin\frac{\pi}{4^{n}}\right]$ 的敛散性。
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 判定级数 $\displaystyle \sum_{n=1}^{\infty}(-1)^{n}\ln\frac{n+1}{n}$ 的敛散性，并判断为条件收敛或绝对收敛。
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 求幂级数 $\displaystyle \sum_{n=0}^{\infty}\frac{x^{n}}{n+1}$ 的和函数，并求级数 $\displaystyle \sum_{n=0}^{\infty}\frac{1}{2^{n}(n+1)}$ 的和。
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 将函数 $f(x)=\dfrac{1}{x^{2}+3x+2}$ 展开成 $(x+4)$ 的幂级数。
+    \end{bbox}
+
+    \begin{bbox}[big]
+        \qitem 将函数 $f(x)=\cos x$ 展开成 $\left(x+\dfrac{\pi}{3}\right)$ 的幂级数。
     \end{bbox}
 
 \end{qitems}
